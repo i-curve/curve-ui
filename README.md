@@ -1,4 +1,4 @@
-# test-ui
+# curve-ui
 
 ## Project setup
 ```
