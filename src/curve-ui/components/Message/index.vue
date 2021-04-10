@@ -1,10 +1,10 @@
 <template>
   <div class="message" v-show="status">
+    <span @click="shudown">x</span>
     <header class="title" v-if="title.length > 0">
       <h1>{{title}}</h1>
     </header>
     <article class="content">
-      <span @click="shudown">X</span>
       <p>{{content}}</p>
     </article>
   </div>
@@ -26,12 +26,22 @@ export default {
     content: {
       type: String,
       default: ''
+    },
+    time: {
+      type: Number,
+      default: 0
     }
   },
   setup(props) {
-    const status = ref(props.status)
+    const status = ref(props.status),
+          time = parseInt(props.time)
     const shudown = () => {
       status.value = false
+    }
+    if (time > 0) {
+      setTimeout(() => {
+        status.value = false
+      }, props.time)
     }
     return {
       status,
@@ -51,6 +61,8 @@ export default {
   background-color: #EDF2FC;
   transition: all .3s;
   .title {
+    padding-left: 30px;
+    line-height: 30px;
     border-bottom: 1px solid #EDF2FC;
     h1 {
       font-weight: normal;
@@ -62,13 +74,12 @@ export default {
     padding-left: 30px;
     font-size: 12px;
     line-height: 25px;
-
-    span {
+  }
+  span {
       position: absolute;
       right: 15px;
       top: 12px;
       cursor: pointer;
     }
-  }
 }
 </style>

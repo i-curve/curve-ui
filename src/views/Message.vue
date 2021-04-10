@@ -1,7 +1,8 @@
 <template>
   <cu-message
+    title="Header"
     content="this is content"
-    @changeStatus="change"
+    :time="2000"
   />
 </template>
 
@@ -9,12 +10,7 @@
 export default {
   name: 'Message',
   setup() {
-    const change = () => {
-
-    }
-    return {
-      change
-    }
+    
   }
 }
 </script>
