@@ -3,6 +3,11 @@ import { createRouter, createWebHistory } from 'vue-router'
 const routes = [
   {
     path: '/',
+    name: 'carousel',
+    component: () => import('../views/Carousel.vue')
+  },
+  {
+    path: '/message',
     name: 'message',
     component: () => import('../views/Message.vue')
   },
